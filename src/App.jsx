@@ -36,7 +36,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <Router>
+    <Router basename="/Elearna-website">
       <Header />
       <Routes>
         <Route path="/blogone" element={<Home />} />
