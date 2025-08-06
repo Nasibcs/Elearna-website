@@ -22,8 +22,9 @@ module.exports = {
     },
   },
 
+  base: process.env.VITE_BASE_PATH || "/Elearna-website",
   plugins: [
-    // Custom plugin for scrollbar hiding
+    // Custom plugin for scrollbar hiding,
     function ({ addUtilities }) {
       addUtilities({
         '.scrollbar-hide': {
@@ -36,6 +37,7 @@ module.exports = {
           'scrollbar-width': 'none',
         },
       });
+       
     },
   ],
 };
