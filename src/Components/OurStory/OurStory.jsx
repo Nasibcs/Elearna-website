@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import study from "./images/study1.jpg";
 
 export default function OurStory() {
@@ -6,9 +7,14 @@ export default function OurStory() {
     <>
       {/* Main Section */}
       <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-center px-6 lg:px-20 py-16 gap-10 bg-white">
-
         {/* Text Content */}
-        <div className="w-full lg:w-1/2">
+        <motion.div
+          className="w-full lg:w-1/2"
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
           <h1 className="text-xl font-semibold text-blue-600">Our Story</h1>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-4 text-[#0f1c22] leading-tight">
             Limitless learning and get more possibilities
@@ -18,7 +24,13 @@ export default function OurStory() {
           </p>
 
           {/* Stats Box */}
-          <div className="mt-10 border rounded-xl p-6 bg-white w-full">
+          <motion.div
+            className="mt-10 border rounded-xl p-6 bg-white w-full"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             <div className="flex flex-col sm:flex-row justify-around items-center gap-6 text-[#0f1c22]">
               {[
                 { stat: "1.5K", label: "FINISH SEASONS" },
@@ -36,11 +48,17 @@ export default function OurStory() {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Image Section */}
-        <div className="relative w-full lg:w-1/2 flex justify-center items-center">
+        <motion.div
+          className="relative w-full lg:w-1/2 flex justify-center items-center"
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
           <img
             src={study}
             alt="Study"
@@ -48,7 +66,13 @@ export default function OurStory() {
           />
 
           {/* Floating Card */}
-          <div className="absolute bottom-[-30px] left-4 sm:left-10 bg-white shadow-xl p-5 rounded-xl w-[90%] max-w-xs">
+          <motion.div
+            className="absolute bottom-[-30px] left-4 sm:left-10 bg-white shadow-xl p-5 rounded-xl w-[90%] max-w-xs"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             <p className="text-gray-400 font-medium text-sm">Trusted By</p>
             <h2 className="text-black text-base font-bold mt-1">
               15000+ enrolled students
@@ -74,12 +98,18 @@ export default function OurStory() {
               <span className="text-black ml-2 text-sm font-semibold">4.94</span>
               <span className="text-gray-400 text-xs">(625)</span>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Bottom Highlight Section */}
-      <div className="bg-[#243631] w-[90%] mx-auto rounded-xl mb-10 grid grid-cols-1 md:grid-cols-3 text-white text-center py-10 gap-6 px-6">
+      <motion.div
+        className="bg-[#243631] w-[90%] mx-auto rounded-xl mb-10 grid grid-cols-1 md:grid-cols-3 text-white text-center py-10 gap-6 px-6"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
         {[
           { title: "150+ online courses", desc: "Lorem ipsum dolor sit amet" },
           { title: "Personalized learning", desc: "Lorem ipsum dolor sit amet" },
@@ -90,7 +120,7 @@ export default function OurStory() {
             <p className="text-gray-300 text-sm mt-2">{item.desc}</p>
           </div>
         ))}
-      </div>
+      </motion.div>
     </>
   );
 }

@@ -1,4 +1,6 @@
+import React from "react";
 import { FaStar, FaBookOpen, FaUser } from "react-icons/fa";
+import { motion } from "framer-motion";
 import one from './images/one.webp';
 import tow from "./images/tow.webp";
 import three from "./images/three.webp";
@@ -9,6 +11,17 @@ import six from "./images/six.webp";
 export default function OnlineLearning() {
   const CoursesData = [
     {
+      price:"$200",
+      name: "Management",
+      image: one,
+      desc: "Crisis management and problem-solving strategies",
+      review: "4.88",
+      reviews: "210",
+      lessons: "6 Lessons",
+      enroll: "8k Enrolled",
+    },
+    {
+      price:"$200",
       name: "Management",
       image: one,
       desc: "Crisis management and problem-solving strategies",
@@ -25,6 +38,7 @@ export default function OnlineLearning() {
       reviews: "1.2k",
       lessons: "8 Lessons",
       enroll: "25k Enrolled",
+       price:"$220",
     },
     {
       name: "Finance",
@@ -34,6 +48,7 @@ export default function OnlineLearning() {
       reviews: "812",
       lessons: "12 Lessons",
       enroll: "28k Enrolled",
+       price:"$120",
     },
     {
       name: "Development",
@@ -43,6 +58,7 @@ export default function OnlineLearning() {
       reviews: "12",
       lessons: "12 Lessons",
       enroll: "18k Enrolled",
+       price:"$300",
     },
     {
       name: "Management",
@@ -52,6 +68,7 @@ export default function OnlineLearning() {
       reviews: "130",
       lessons: "15 Lessons",
       enroll: "10k Enrolled",
+       price:"$310",
     },
     {
       name: "Development",
@@ -61,9 +78,31 @@ export default function OnlineLearning() {
       reviews: "2.1k",
       lessons: "15 Lessons",
       enroll: "10k Enrolled",
+       price:"$110",
+    },
+        {
+      name: "Design",
+      image: tow,
+      desc: "Advanced Photoshop techniques for designers",
+      review: "5.00",
+      reviews: "1.2k",
+      lessons: "8 Lessons",
+      enroll: "25k Enrolled",
+       price:"$220",
+    },
+      {
+      price:"$200",
+      name: "Management",
+      image: one,
+      desc: "Crisis management and problem-solving strategies",
+      review: "4.88",
+      reviews: "210",
+      lessons: "6 Lessons",
+      enroll: "8k Enrolled",
     },
   ];
 
+  
   return (
     <div className="w-full min-h-screen px-4 sm:px-6 lg:px-12 py-10 bg-[#e5f7f9]">
       {/* Top Section */}
@@ -81,12 +120,16 @@ export default function OnlineLearning() {
         </div>
       </div>
 
-      {/* Course Cards */}
+      {/* Course Cards with motion */}
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {CoursesData.map((course, index) => (
-          <div
+          <motion.div
             key={index}
             className="bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-xl transition-all duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1, duration: 0.5 }}
+            whileHover={{ scale: 1.05 }}
           >
             <div className="relative">
               <img
@@ -94,8 +137,8 @@ export default function OnlineLearning() {
                 alt={course.name}
                 className="w-full h-52 object-cover"
               />
-              <span className="absolute top-4 right-4 bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded-full">
-                Free
+              <span className="absolute top-4 right-4 w-16 h-16 flex justify-center items-center font-bold text-xl bg-blue-600 text-white px-3 py-1 rounded-full">
+                {course.price}
               </span>
             </div>
 
@@ -128,7 +171,7 @@ export default function OnlineLearning() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
@@ -144,3 +187,4 @@ export default function OnlineLearning() {
     </div>
   );
 }
+

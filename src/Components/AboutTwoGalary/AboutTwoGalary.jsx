@@ -1,3 +1,6 @@
+import React from "react";
+import { motion } from "framer-motion";
+
 import st1 from "./images/st1.jpg";
 import st2 from "./images/st2.jpg";
 import st3 from "./images/st3.jpg";
@@ -57,7 +60,7 @@ const data = [
     author: "Nina Lefler",
     date: "30.09.2024",
   },
-    {
+  {
     image: st2,
     title: "Empowering teachers with student behavior data",
     author: "Nina Lefler",
@@ -69,9 +72,14 @@ export default function AboutTwoGalary() {
   return (
     <div className="w-full bg-white px-4 sm:px-6 md:px-10 py-10 border border-blue-200 rounded-xl shadow-md">
       <div className="flex flex-col lg:flex-row gap-10 justify-between">
-        
         {/* Sticky Left Section */}
-        <div className="w-full lg:w-1/3 sticky top-10 self-start border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+        <motion.div
+          className="w-full lg:w-1/3 sticky top-10 self-start border border-gray-200 rounded-xl shadow-sm overflow-hidden"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <img src={st9} alt="Visual learning" className="w-full h-60 object-cover" />
           <div className="bg-white p-5">
             <p className="text-sm text-gray-500">12.10.2024 • Nina Lefler</p>
@@ -83,15 +91,20 @@ export default function AboutTwoGalary() {
               fermentum eu diam vulputate.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Grid Section */}
         <div className="w-full lg:w-2/3 max-h-[100%] overflow-hidden">
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 custom-scrollbar-hidden">
             {data.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg transition duration-300"
+                className="bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg transition duration-300 cursor-pointer"
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(0,0,0,0.12)" }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
                 <img
                   src={item.image}
@@ -103,11 +116,11 @@ export default function AboutTwoGalary() {
                     {item.date} <span className="mx-1">•</span>
                     <span className="font-semibold uppercase">{item.author}</span>
                   </p>
-                  <h3 className="text-sm font-semibold text-black mt-2 leading-snug hover:text-blue-600 cursor-pointer transition duration-200">
+                  <h3 className="text-sm font-semibold text-black mt-2 leading-snug hover:text-blue-600 transition duration-200">
                     {item.title}
                   </h3>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -10,8 +10,8 @@ const navItems = [
     name: "Home",
     dropdown: [
       { label: "Home one", path: "/homeone" },
-      { label: "Home two", path: "/hometwo" },
-      { label: "Home three", path: "/homethree" },
+      { label: "Home two", path: "#" },
+      { label: "Home three", path: "#" },
     ],
   },
   {
@@ -28,38 +28,36 @@ const navItems = [
     name: "Pages",
     dropdown: [
       { label: "About one", path: "/aboutone" },
-      { label: "About two", path: "/about-two" },
-      { label: "Course one", path: "/course-one" },
-      { label: "Course two", path: "/course-two" },
-      { label: "Course three", path: "/course-three" },
+      { label: "About two", path: "#" },
+      { label: "Course one", path: "#" },
+      { label: "Course two", path: "#" },
+      { label: "Course three", path: "#" },
       { label: "FAQ", path: "/faq" },
-      { label: "Pricing one", path: "/pricing-one" },
-      { label: "Pricing two", path: "/pricing-two" },
-      { label: "Pricing three", path: "/pricing-three" },
-      { label: "Career", path: "/career" },
-      { label: "Events", path: "/events" },
-      { label: "Team", path: "/team" },
+      { label: "Pricing one", path: "#" },
+      { label: "Pricing two", path: "#" },
+      { label: "Pricing three", path: "#" },
+      { label: "Career", path: "#" },
+      { label: "Events", path: "#" },
+      { label: "Team", path: "#" },
     ],
   },
   {
     name: "Blog",
     dropdown: [
       { label: "Blog one", path: "/blogone" },
-      { label: "Blog two", path: "/blogtwo" },
-      { label: "Blog three", path: "/blogthree" },
+      { label: "Blog two", path: "#" },
+      { label: "Blog three", path: "#" },
     ],
   },
   {
     name: "Contact",
     dropdown: [
       { label: "Contact one", path: "/contactone" },
-      { label: "Contact two", path: "/contacttwo" },
-      { label: "Contact three", path: "/contactthree" },
+      { label: "Contact two", path: "#" },
+      { label: "Contact three", path: "#" },
     ],
   },
 ];
-
-// 🟢 imports همداسې ساتئ لکه ستاسې موجود کوډ کې دي
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -74,8 +72,8 @@ export default function Header() {
 
   return (
     <header className="w-full fixed top-0 left-0 z-50 text-sm">
-      {/* 🔹 Top Bar */}
-      <div className={`w-full flex flex-col md:flex-row items-center justify-between px-4 py-2 text-white ${isScrolled ? "bg-gray-600" : "bg-navOverlay"} transition-all`}>
+      {/* 🔹 Top Bar - hidden on mobile, visible md+ */}
+      <div className={`hidden md:flex w-full flex-col md:flex-row items-center justify-between px-4 py-2 text-white ${isScrolled ? "bg-gray-700" : "bg-navOverlay"} transition-all`}>
         <div className="flex flex-col sm:flex-row sm:items-center w-full md:w-1/2 justify-center md:justify-start text-center sm:text-left">
           <p className="mr-2 text-xs">Interested in online coaching?</p>
           <a href="#" className="flex items-center justify-center space-x-1 mt-1 sm:mt-0">
@@ -190,13 +188,12 @@ export default function Header() {
             ))}
           </ul>
 
-<div className="relative flex justify-center items-center">
-  <FaOpencart className="text-2xl hover:text-indigo-500" />
-  <span className="absolute -top-2 left-1/2 -translate-x-1/2 w-5 h-5 bg-yellow-500 text-white text-xs rounded-full flex items-center justify-center">
-    0
-  </span>
-</div>
-
+          <div className="relative flex justify-center items-center">
+            <FaOpencart className="text-2xl hover:text-indigo-500" />
+            <span className="absolute -top-2 left-1/2 -translate-x-1/2 w-5 h-5 bg-yellow-500 text-white text-xs rounded-full flex items-center justify-center">
+              0
+            </span>
+          </div>
 
           <div className="text-center">
             <a href="#" className="hover:text-indigo-500">Login</a> | <a href="#" className="hover:text-indigo-500">Register</a>

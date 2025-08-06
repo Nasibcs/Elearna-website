@@ -1,5 +1,6 @@
 import React from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export default function LindaGrady() {
   return (
@@ -17,23 +18,36 @@ export default function LindaGrady() {
           </svg>
         </div>
 
-        {/* Quote Text */}
-        <p className="text-lg md:text-xl text-gray-800 font-medium leading-relaxed mb-8 px-4">
+        {/* Quote Text with fade-in animation */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-lg md:text-xl text-gray-800 font-medium leading-relaxed mb-8 px-4"
+        >
           “Lorem ipsum dolor sit amet consectetur. Adipiscing eget risus tempus facilisis scelerisque vitae consectetur vitae. Amet faucibus venenatis donec mattis. Morbi placerat eleifend malesuada sed semper quis.”
-        </p>
+        </motion.p>
 
         {/* Name and Role */}
         <h3 className="text-lg font-semibold text-gray-900">Linda Grady</h3>
         <p className="text-sm text-gray-500 mb-6 tracking-wide uppercase">Co-Assistant Manager</p>
 
-        {/* Arrows */}
+        {/* Arrows with hover and tap animations */}
         <div className="flex justify-center space-x-4">
-          <button className="w-10 h-10 rounded-full border border-gray-400 flex items-center justify-center hover:bg-gray-200 transition">
+          <motion.button
+            whileHover={{ scale: 1.1, backgroundColor: "#e5e7eb" }}
+            whileTap={{ scale: 0.95 }}
+            className="w-10 h-10 rounded-full border border-gray-400 flex items-center justify-center transition"
+          >
             <FaArrowLeft className="text-gray-600" />
-          </button>
-          <button className="w-10 h-10 rounded-full border border-gray-400 flex items-center justify-center hover:bg-gray-200 transition">
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1, backgroundColor: "#e5e7eb" }}
+            whileTap={{ scale: 0.95 }}
+            className="w-10 h-10 rounded-full border border-gray-400 flex items-center justify-center transition"
+          >
             <FaArrowRight className="text-gray-600" />
-          </button>
+          </motion.button>
         </div>
       </div>
     </div>

@@ -141,23 +141,27 @@ export default function TrendingCourses() {
           })}
         </div>
       </div>
+<div className="bg-yellow-500 w-full max-w-[80rem] mx-auto relative top-16 sm:top-24 md:top-32 mt-10 mb-20 sm:mt-16 rounded px-4 sm:px-8 md:px-10 py-6 flex flex-col md:flex-row items-center justify-between text-center md:text-left space-y-4 md:space-y-0">
+  {/* Left Text Section */}
+  <div className="w-full md:w-1/2">
+    <h1 className="text-xl sm:text-2xl font-bold leading-snug">
+      Are you ready to start
+      <br className="hidden sm:block" />
+      your journey?
+    </h1>
+  </div>
 
-      <div className="bg-yellow-500 w-full max-w-[80rem] mx-auto relative top-16 sm:top-24 md:top-32 mt-10 sm:mt-16 rounded h-auto sm:h-44 flex flex-col md:flex-row justify-between items-center px-6 sm:px-10 py-6 sm:py-4 text-center md:text-left">
-        <div className="md:w-1/2 mb-4 md:mb-0">
-          <h1 className="text-xl sm:text-2xl font-bold">
-            Are you ready to start
-            <br /> your journey?
-          </h1>
-        </div>
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full sm:w-auto justify-center">
-          <button className="bg-black text-white px-4 sm:px-6 py-2 rounded shadow hover:bg-gray-800 transition text-sm sm:text-base">
-            Browse Courses
-          </button>
-          <button className="border-2 border-white font-semibold text-white px-4 sm:px-6 py-2 rounded hover:bg-yellow-600 transition text-sm sm:text-base">
-            Become A Teacher
-          </button>
-        </div>
-      </div>
+  {/* Right Buttons Section */}
+  <div className="w-full md:w-auto flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4">
+    <button className="w-full sm:w-auto bg-black text-white px-5 py-2 rounded shadow hover:bg-gray-800 transition text-sm sm:text-base">
+      Browse Courses
+    </button>
+    <button className="w-full sm:w-auto border-2 border-white font-semibold text-white px-5 py-2 rounded hover:bg-yellow-600 transition text-sm sm:text-base">
+      Become A Teacher
+    </button>
+  </div>
+</div>
+
     </div>
   );
 }

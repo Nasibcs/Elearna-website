@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { motion } from "framer-motion";
 import img from "./images/img.svg";
 
 const schema = z.object({
@@ -28,8 +29,15 @@ export default function ContactForm() {
 
   return (
     <div className="w-full min-h-screen flex flex-col md:flex-row justify-center items-center bg-gradient-to-tr from-white to-gray-100 p-6 md:p-8 lg:p-12 gap-10">
-      {/* Left content */}
-      <div className="w-full md:w-1/2 px-4 md:px-12">
+      
+      {/* Left content with animation */}
+      <motion.div
+        initial={{ opacity: 0, x: -40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="w-full md:w-1/2 px-4 md:px-12"
+      >
         <h5 className="text-sm font-semibold uppercase tracking-widest mb-3 text-gray-600">
           Contact Us
         </h5>
@@ -49,10 +57,16 @@ export default function ContactForm() {
           <p className="font-semibold text-lg text-gray-900">Brayden Backham</p>
           <p className="text-xs tracking-widest text-gray-500">DIRECTOR</p>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Form content */}
-      <div className="w-full max-w-md bg-white shadow-xl rounded-lg p-6 md:p-10">
+      {/* Form content with animation */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="w-full max-w-md bg-white shadow-xl rounded-lg p-6 md:p-10"
+      >
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
           Fill out for contact
         </h2>
@@ -122,14 +136,16 @@ export default function ContactForm() {
             </label>
           </div>
 
-          <button
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             type="submit"
             className="bg-black text-white px-6 py-3 rounded-md transition duration-300 shadow-md hover:bg-gray-900 w-full"
           >
             Send Message
-          </button>
+          </motion.button>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 }

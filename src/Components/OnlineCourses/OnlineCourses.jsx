@@ -1,11 +1,19 @@
+import React from "react";
+import { motion } from "framer-motion";
 import demoVideo from './video/video.mp4';
+// که غواړې عکسونه وکاروې نو وروسته یې اضافه کړه
 
 export default function OnlineCourses() {
   return (
     <div className='w-full flex flex-col lg:flex-row justify-center items-center gap-8 px-4 sm:px-6 lg:px-12 py-10'>
 
       {/* Left Banner Section */}
-      <div className='w-full lg:w-1/2 h-80 sm:h-96 rounded bg-boxbanner bg-cover bg-center flex items-center justify-center'>
+      <motion.div 
+        className='w-full lg:w-1/2 h-80 sm:h-96 rounded bg-boxbanner bg-cover bg-center flex items-center justify-center'
+        initial={{opacity: 0, x: -50}}
+        animate={{opacity: 1, x: 0}}
+        transition={{duration: 0.8}}
+      >
         <div className='bg-whiteOverlay flex h-full items-end w-full'>
           <div className='mb-10 sm:mb-14 md:mb-20 px-4 sm:px-6 md:px-10 text-black'>
             <h1 className='text-xl sm:text-2xl font-semibold leading-snug'>
@@ -16,11 +24,15 @@ export default function OnlineCourses() {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Right Video Section */}
-      <div className='w-full lg:w-1/2 rounded flex flex-col md:flex-row bg-[#F8EFBA] items-center justify-between p-6 gap-6'>
-
+      <motion.div 
+        className='w-full lg:w-1/2 rounded flex flex-col md:flex-row bg-[#F8EFBA] items-center justify-between p-6 gap-6'
+        initial={{opacity: 0, x: 50}}
+        animate={{opacity: 1, x: 0}}
+        transition={{duration: 0.8}}
+      >
         <div className='w-full md:w-1/3 flex flex-col justify-between items-center text-center'>
           <h1 className='font-bold text-xl sm:text-2xl mb-4 leading-snug'>
             Develop Your <br /> Skill Online!
@@ -36,7 +48,7 @@ export default function OnlineCourses() {
             Your browser does not support the video tag.
           </video>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

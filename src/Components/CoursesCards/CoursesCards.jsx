@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { coursesData } from "./coursesdata";
 
 export default function CoursesCards() {
@@ -5,14 +6,20 @@ export default function CoursesCards() {
     <div className="px-4 py-12 max-w-7xl mx-auto">
       <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {coursesData.map((course, index) => (
-          <div
+          <motion.div
             key={index}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            viewport={{ once: true }}
             className="bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden transition duration-300"
           >
-            <img
+            <motion.img
               src={course.image}
               alt={course.title}
               className="w-full h-48 object-cover"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
             />
             <div className="p-5">
               <p className="text-sm font-semibold text-gray-500 uppercase mb-1">
@@ -21,11 +28,19 @@ export default function CoursesCards() {
               <h2 className="text-lg font-bold text-gray-800">{course.title}</h2>
               <p className="text-gray-400 text-sm mt-2">{course.date}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-      {/* Optional pagination section */}
-      <div className="text-center mt-8 text-sm text-gray-500">1 / 2 &nbsp; <span className="underline cursor-pointer">Next ➜</span></div>
+
+      <div className="text-center mt-8 text-sm text-gray-500">
+        1 / 2 &nbsp;
+        <motion.span
+          whileHover={{ scale: 1.1 }}
+          className="underline cursor-pointer"
+        >
+          Next ➜
+        </motion.span>
+      </div>
     </div>
   );
 }
