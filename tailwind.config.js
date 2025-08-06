@@ -9,10 +9,10 @@ module.exports = {
       backgroundImage: {
         bannerImg: "url('./src/components/Home/images/homeImage.jpg')",
         homeOnebanner: "url('./src/components/Home/images/homeonebg.avif')",
-        homeonebanner: "url('./src/components/HomeOne/image/homeoneImage.webp')", // ✅ only one definition
+        homeonebanner: "url('./src/components/HomeOne/image/homeoneImage.webp')",
         blackOverlay: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1.5) 100%)",
-        darkOverlay:"linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1.2) 100%)",
-        darkOverlayTop:"linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(5,10,10,1.8) 90%)",
+        darkOverlay: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1.2) 100%)",
+        darkOverlayTop: "linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(5,10,10,1.8) 90%)",
         navOverlay: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%)",
         insBackgroundImage: "url('./src/components/Instructor/image/bgImage.jpg')",
         boxbanner: "url('./src/components/Home/images/manager.jpg')",
@@ -21,5 +21,21 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+
+  plugins: [
+    // Custom plugin for scrollbar hiding
+    function ({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-hide': {
+          /* For Chrome, Safari, and Opera */
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+          /* For IE, Edge, and Firefox */
+          '-ms-overflow-style': 'none',
+          'scrollbar-width': 'none',
+        },
+      });
+    },
+  ],
 };

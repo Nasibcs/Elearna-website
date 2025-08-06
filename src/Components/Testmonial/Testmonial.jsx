@@ -1,49 +1,74 @@
 import React from "react";
 import boxImage from "./images/boxImage.avif";
-export default function Testmonial() {
+
+export default function Testimonial() {
   return (
-    <div className="w-full h-screen bg-[#171f17] flex flex-col p-5">
-      <div className="flex w-full h-40 p-5 justify-between">
+    <div className="w-full bg-[#171f17] px-4 py-10 md:px-10 lg:px-20">
+      
+      {/* Header section */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div>
-          <h1 className="font-bold text-white">Our testimonials</h1>
-          <p className="text-4xl text-white mt-4">
-            Trusted by our
-            <br /> successful students
-          </p>
+          <h3 className="text-sm md:text-base font-semibold text-white">
+            Our Testimonials
+          </h3>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mt-2 leading-snug">
+            Trusted by our<br className="hidden sm:block" />
+            successful students
+          </h1>
         </div>
-        <div className=" w-[30rem] h-24 mt-16 mr-44 flex justify-between ">
-          <div className="text-white flex ">
-            <h1 className="text-4xl text-center mt-[10px]">70M</h1>
-            <span className="text-6xl ">|</span>
-            <span className="text-gray-400 ml-2 mt-2">
-              <h1>SUCCESSFUL </h1>
-              <h1>STUDENTS</h1>
-            </span>
+
+        <div className="flex flex-col sm:flex-row gap-6 text-white">
+          <div className="flex items-center gap-3">
+            <h2 className="text-3xl font-bold">70M</h2>
+            <div className="border-l-2 h-10 border-gray-600 mx-2" />
+            <div className="text-xs text-gray-400 leading-tight">
+              <p>SUCCESSFUL</p>
+              <p>STUDENTS</p>
+            </div>
           </div>
-          <div className="text-white flex ">
-            <h1 className="text-4xl text-center mt-[10px]">25k</h1>
-            <span className="text-6xl ">|</span>
-            <span className="text-gray-400 ml-2 mt-2">
-              <h1>Global job</h1>
-              <h1>placements</h1>
-            </span>
+          <div className="flex items-center gap-3">
+            <h2 className="text-3xl font-bold">25k</h2>
+            <div className="border-l-2 h-10 border-gray-600 mx-2" />
+            <div className="text-xs text-gray-400 leading-tight">
+              <p>GLOBAL JOB</p>
+              <p>PLACEMENTS</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="w-full h-80 flex p-4 justify-around">
-        <div className=" h-full">
-        <img src={boxImage} alt="" className="w-96 rounded mb-5" />
-        </div>
-        <div className=" w-96 h-full relative right-40">
-        <p className="text-gray-400 mt-6">“Lorem ipsum dolor sit amet consectetur. Adipiscing eget risus tempus facilisis scelerisque vitae consectetur vitae. Amet faucibus venenatis donec mattis. Morbi placerat eleifend malesuada sed semper quis.”</p>
+      {/* Testimonial section */}
+      <div className="mt-12 flex flex-col lg:flex-row items-center lg:items-start gap-10">
         
-        <h1 className="text-white mt-14">Linda Grady</h1>
-        <p className="text-gray-400 text-sm mt-3">Co-assistant manager</p>
-        <div className="flex w-32 ml-3 mt-5 justify-between text-white">
-            <button className="border-2 hover:bg-yellow-500 hover:text-black hover:border-yellow-500 w-10 h-10 rounded-full text-center ">→</button>
-            <button className=" hover:bg-yellow-500 hover:text-black hover:border-yellow-500 border-2 w-10 h-10 rounded-full text-center">←</button>
+        {/* Image */}
+        <div className="w-full sm:w-80 lg:w-[28rem]">
+          <img
+            src={boxImage}
+            alt="Testimonial"
+            className="w-full h-full rounded-lg object-cover shadow-lg"
+          />
         </div>
+
+        {/* Text Box */}
+        <div className="w-full lg:w-[30rem] text-white">
+          <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+            "Lorem ipsum dolor sit amet consectetur. Adipiscing eget risus tempus facilisis 
+            scelerisque vitae consectetur vitae. Amet faucibus venenatis donec mattis. 
+            Morbi placerat eleifend malesuada sed semper quis."
+          </p>
+
+          <h3 className="mt-6 text-lg font-semibold">Linda Grady</h3>
+          <p className="text-sm text-gray-400">Co-assistant manager</p>
+
+          {/* Arrows */}
+          <div className="flex gap-4 mt-6">
+            <button className="w-10 h-10 border border-white rounded-full hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300 flex items-center justify-center">
+              ←
+            </button>
+            <button className="w-10 h-10 border border-white rounded-full hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300 flex items-center justify-center">
+              →
+            </button>
+          </div>
         </div>
       </div>
     </div>

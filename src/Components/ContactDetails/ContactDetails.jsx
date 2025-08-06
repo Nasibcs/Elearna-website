@@ -23,12 +23,12 @@ export default function ContactDetails() {
   ];
 
   return (
-    <div className="w-full px-6 py-16 bg-gray-100">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="w-full px-4 sm:px-6 lg:px-8 py-12 bg-gray-100">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
         {info.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col items-center text-center bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition duration-300"
+            className="flex flex-col items-center text-center bg-white rounded-xl px-6 py-8 shadow-md hover:shadow-xl transition duration-300"
           >
             <div className="text-green-700 mb-4">{item.icon}</div>
             <h2 className="font-semibold text-lg text-gray-800 mb-2">{item.title}</h2>

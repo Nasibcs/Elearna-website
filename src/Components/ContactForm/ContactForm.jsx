@@ -3,7 +3,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import img from "./images/img.svg";
 
-// Zod Schema
 const schema = z.object({
   name: z.string().min(2, "Name is required"),
   email: z.string().email("Invalid email"),
@@ -11,8 +10,6 @@ const schema = z.object({
   message: z.string().min(10, "Message must be at least 10 characters"),
   saveInfo: z.boolean().optional(),
 });
-
-// Type Inference
 
 export default function ContactForm() {
   const {
@@ -30,13 +27,14 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col md:flex-row justify-center items-center bg-gradient-to-tr from-white to-gray-100 p-8">
-      <div className="w-full md:w-1/2 p-6 md:p-12">
+    <div className="w-full min-h-screen flex flex-col md:flex-row justify-center items-center bg-gradient-to-tr from-white to-gray-100 p-6 md:p-8 lg:p-12 gap-10">
+      {/* Left content */}
+      <div className="w-full md:w-1/2 px-4 md:px-12">
         <h5 className="text-sm font-semibold uppercase tracking-widest mb-3 text-gray-600">
           Contact Us
         </h5>
 
-        <h2 className="text-3xl md:text-3xl font-bold leading-tight text-gray-900 mb-6">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-gray-900 mb-6">
           Are you interested in online learning? Contact us
         </h2>
 
@@ -47,21 +45,20 @@ export default function ContactForm() {
         </p>
 
         <div>
-          <img
-            src={img}
-            alt="Signature"
-            className="h-12 mb-3"
-          />
+          <img src={img} alt="Signature" className="h-12 mb-3" />
           <p className="font-semibold text-lg text-gray-900">Brayden Backham</p>
           <p className="text-xs tracking-widest text-gray-500">DIRECTOR</p>
         </div>
       </div>
 
-      <div className="  w-[30rem] relative bottom-28 bg-white shadow-xl rounded-lg p-6 md:p-10 space-y-6">
-        <h2 className="text-3xl font-bold text-gray-900">Fill out for contact</h2>
-        <p className="text-gray-500">Lorem ipsum dolor sit amet consectetur libero donec.</p>
+      {/* Form content */}
+      <div className="w-full max-w-md bg-white shadow-xl rounded-lg p-6 md:p-10">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+          Fill out for contact
+        </h2>
+        <p className="text-gray-500 mb-6">Lorem ipsum dolor sit amet consectetur libero donec.</p>
 
-        <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+        <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <input
               type="text"
@@ -71,7 +68,9 @@ export default function ContactForm() {
                 errors.name ? "border-red-500" : "border-gray-300"
               } rounded-md px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-700`}
             />
-            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+            )}
           </div>
 
           <div>
@@ -83,7 +82,9 @@ export default function ContactForm() {
                 errors.email ? "border-red-500" : "border-gray-300"
               } rounded-md px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-700`}
             />
-            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+            )}
           </div>
 
           <div>
@@ -123,7 +124,7 @@ export default function ContactForm() {
 
           <button
             type="submit"
-            className="bg-black text-white px-6 py-3 rounded-md transition duration-300 shadow-md"
+            className="bg-black text-white px-6 py-3 rounded-md transition duration-300 shadow-md hover:bg-gray-900 w-full"
           >
             Send Message
           </button>

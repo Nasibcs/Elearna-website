@@ -2,27 +2,41 @@ import demoVideo from './video/video.mp4';
 
 export default function OnlineCourses() {
   return (
-    <div className='w-full h-96 flex justify-around '>
-      <div className='w-[600px] rounded h-full bg-boxbanner bg-cover bg-center flex items-center justify-center'>
+    <div className='w-full flex flex-col lg:flex-row justify-center items-center gap-8 px-4 sm:px-6 lg:px-12 py-10'>
+
+      {/* Left Banner Section */}
+      <div className='w-full lg:w-1/2 h-80 sm:h-96 rounded bg-boxbanner bg-cover bg-center flex items-center justify-center'>
         <div className='bg-whiteOverlay flex h-full items-end w-full'>
-          <div className='container mb-40 text-black ml-10 mt-28'>
-              <h1>Quick access to the <br/> popular courses</h1>
-              <button className='bg-yellow-500 w-36 h-10 rounded font-bold mt-6'>View Courses</button>
-           </div>
+          <div className='mb-10 sm:mb-14 md:mb-20 px-4 sm:px-6 md:px-10 text-black'>
+            <h1 className='text-xl sm:text-2xl font-semibold leading-snug'>
+              Quick access to the <br /> popular courses
+            </h1>
+            <button className='bg-yellow-500 w-36 h-10 rounded font-bold mt-4 hover:bg-yellow-400 transition'>
+              View Courses
+            </button>
+          </div>
         </div>
       </div>
-      <div className='w-[600px] rounded h-full flex bg-[#F8EFBA] items-center justify-between'>
-        <div className='w-1/3 h-1/3 flex flex-col justify-between items-center'>
-        <h1 className='font-bold text-xl'>Develop Your <br/>Skill Online!</h1>
-        <button className='p-4 w-40 h-12 bg-black text-white rounded flex justify-center items-center'>Apply Now</button>
+
+      {/* Right Video Section */}
+      <div className='w-full lg:w-1/2 rounded flex flex-col md:flex-row bg-[#F8EFBA] items-center justify-between p-6 gap-6'>
+
+        <div className='w-full md:w-1/3 flex flex-col justify-between items-center text-center'>
+          <h1 className='font-bold text-xl sm:text-2xl mb-4 leading-snug'>
+            Develop Your <br /> Skill Online!
+          </h1>
+          <button className='w-40 h-12 bg-black text-white rounded hover:bg-gray-800 transition'>
+            Apply Now
+          </button>
         </div>
-        <div className='w-1/2 h-1/2 mr-10 '>
-              <video width="600" controls className='w-full h-full object-cover rounded'>
-        <source src={demoVideo} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+
+        <div className='w-full md:w-2/3'>
+          <video controls className='w-full h-56 sm:h-60 md:h-52 lg:h-64 object-cover rounded'>
+            <source src={demoVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
     </div>
-  )
+  );
 }

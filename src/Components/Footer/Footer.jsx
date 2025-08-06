@@ -1,67 +1,75 @@
 import React from "react";
 import logo from "./image/logo.svg";
+
 export default function Footer() {
   return (
-    <div className="w-full h-screen bg-gray-800 flex flex-col justify-between">
-      <div className="h-80 w-full flex justify-between items-center p-3 mt-32 ">
-        <div className=" w-56 h-44">
-          <div className="flex items-center space-x-2">
+    <div className="w-full bg-gray-800 text-white">
+      {/* Top Footer */}
+      <div className="container mx-auto px-4 py-12 flex flex-col lg:flex-row flex-wrap gap-10 justify-between">
+        {/* Logo + Description */}
+        <div className="w-full sm:w-1/2 lg:w-1/5">
+          <div className="flex items-center space-x-2 mb-4">
             <img src={logo} alt="Logo" className="w-32 h-8" />
           </div>
-          <p className="text-gray-500 mt-6">
-            Lorem ipsum dolor sit amet consectetur. Posuere vitae lacus quis
-            eget amet ut tristique cras.
+          <p className="text-gray-400 text-sm">
+            Lorem ipsum dolor sit amet consectetur. Posuere vitae lacus quis eget amet ut tristique cras.
           </p>
         </div>
-        <div className="text-xl w-48">
-          <h1 className="text-white font-bold">Popular courses</h1>
-          <ul className="text-gray-500 m-3">
+
+        {/* Popular Courses */}
+        <div className="w-full sm:w-1/2 lg:w-1/5">
+          <h1 className="text-lg font-bold mb-2">Popular Courses</h1>
+          <ul className="text-gray-400 text-sm space-y-1">
             <li>Finance</li>
             <li>Management</li>
             <li>Design</li>
-            <li>Web development</li>
+            <li>Web Development</li>
           </ul>
         </div>
-        <div className=" text-xl w-36">
-          <h1 className="text-white font-bold">Company</h1>
-          <ul className="text-gray-500 m-3">
+
+        {/* Company */}
+        <div className="w-full sm:w-1/2 lg:w-1/5">
+          <h1 className="text-lg font-bold mb-2">Company</h1>
+          <ul className="text-gray-400 text-sm space-y-1">
             <li>About</li>
-            <li>courses</li>
+            <li>Courses</li>
             <li>Blogs</li>
-            <li>contact</li>
+            <li>Contact</li>
             <li>License</li>
-            <li>pricing</li>
+            <li>Pricing</li>
           </ul>
         </div>
-        <div className="text-xl w-48">
-          <h1 className="text-white font-bold">CMS</h1>
-          <ul className="text-gray-500 m-3">
-            <li>Course details</li>
-            <li>Instructor details</li>
-            <li>Blog details</li>
+
+        {/* CMS */}
+        <div className="w-full sm:w-1/2 lg:w-1/5">
+          <h1 className="text-lg font-bold mb-2">CMS</h1>
+          <ul className="text-gray-400 text-sm space-y-1">
+            <li>Course Details</li>
+            <li>Instructor Details</li>
+            <li>Blog Details</li>
           </ul>
         </div>
-        <div className="w-40">
-          <h1 className="text-white font-bold">Need help?</h1>
-          <ul className="text-gray-500 m-3">
+
+        {/* Help Section */}
+        <div className="w-full sm:w-1/2 lg:w-1/5">
+          <h1 className="text-lg font-bold mb-2">Need Help?</h1>
+          <ul className="text-gray-400 text-sm space-y-3">
             <li>
               Call us <br />
-              <span className="text-white font-bold">(888) 123 4567</span>
+              <span className="text-white font-semibold">+93795582109</span>
             </li>
             <li>
               Need support? <br />
-              <span className="text-white font-bold">info@example.com</span>
+              <span className="text-white font-semibold">nasibburhan4@gmail.com</span>
             </li>
           </ul>
         </div>
       </div>
-      <div className="w-full border-t flex items-center p-2 justify-between">
-        <h1 className="text-gray-500">
-          Design by <span className="text-white">Nasib Burhan</span>
-        </h1>
-        <h1 className="text-gray-500">
-          Powered by <span className="text-white">Nasib Burhan</span>
-        </h1>
+
+      {/* Bottom Footer */}
+      <div className="border-t border-gray-700 text-gray-400 text-sm py-4 px-4 flex flex-col sm:flex-row justify-between items-center">
+        <p>Design by <span className="text-white font-medium">Nasib Burhan</span></p>
+        <p>Powered by <span className="text-white font-medium">Nasib Burhan</span></p>
       </div>
     </div>
   );
