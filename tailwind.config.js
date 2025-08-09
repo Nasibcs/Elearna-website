@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        bannerImg: "url('./src/Components/Home/images/homeImage.jpg')",
+       bannerImg: "url('/images/homeImage.jpg')",
         homeOnebanner: "url('./src/components/Home/images/homeonebg.avif')",
         homeonebanner: "url('./src/components/HomeOne/image/homeoneImage.webp')",
         blackOverlay: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1.5) 100%)",
