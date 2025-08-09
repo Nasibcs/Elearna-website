@@ -44,8 +44,8 @@ const navItems = [
   {
     name: "Blog",
     dropdown: [
-      { label: "Blog one", path: "/blogone" },
-      { label: "Blog two", path: "#" },
+      { label: "Blog one", path: "/" },
+      { label: "Blog two", path: "/blogtwo" },
       { label: "Blog three", path: "#" },
     ],
   },

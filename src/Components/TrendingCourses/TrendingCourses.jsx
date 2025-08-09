@@ -10,6 +10,7 @@ import {
   FaLaptopCode,
   FaBullhorn,
 } from "react-icons/fa";
+import { de } from "zod/locales";
 
 export default function TrendingCourses() {
   const categories = [
@@ -29,6 +30,10 @@ export default function TrendingCourses() {
       lessons: "6 Lessons",
       enroll: "8k Enrolled",
       price: "free",
+       hoverTitle:"Building single page applications with angular",
+    hoverLessons:"6 Lessons",
+    hoverEnrolled:"12k Enrolled",
+    hoverDesc:'Lorem ipsum dolor sit amet consectetur. Eget viverra suspendisse imperdiet.',
     },
     {
       name: "Design",
@@ -39,6 +44,10 @@ export default function TrendingCourses() {
       lessons: "8 Lessons",
       enroll: "25k Enrolled",
       price: "$200",
+       hoverTitle:"Building single page applications with angular",
+    hoverLessons:"6 Lessons",
+    hoverEnrolled:"12k Enrolled",
+    hoverDesc:'Lorem ipsum dolor sit amet consectetur. Eget viverra suspendisse imperdiet.',
     },
     {
       name: "Finance",
@@ -49,6 +58,10 @@ export default function TrendingCourses() {
       lessons: "12 Lessons",
       enroll: "28k Enrolled",
       price: "$140",
+       hoverTitle:"Building single page applications with angular",
+    hoverLessons:"6 Lessons",
+    hoverEnrolled:"12k Enrolled",
+    hoverDesc:'Lorem ipsum dolor sit amet consectetur. Eget viverra suspendisse imperdiet.',
     },
     {
       name: "Coding",
@@ -59,8 +72,16 @@ export default function TrendingCourses() {
       lessons: "10 Lessons",
       enroll: "18k Enrolled",
       price: "$320",
+       hoverTitle:"Building single page applications with angular",
+    hoverLessons:"6 Lessons",
+    hoverEnrolled:"12k Enrolled",
+    hoverDesc:'Lorem ipsum dolor sit amet consectetur. Eget viverra suspendisse imperdiet.',
+
     },
   ];
+  const hoverCard =[{
+   
+  }]
 
   return (
     <div className="w-full flex flex-col p-4 md:p-8 bg-[#e5f3f8]">
@@ -71,12 +92,14 @@ export default function TrendingCourses() {
         </p>
       </div>
 
+      {/* Courses Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 justify-center">
         {courses.map((course, index) => (
           <div
             key={index}
-            className="bg-white w-full rounded shadow-md overflow-hidden hover:shadow-xl transition-all duration-300"
+            className="relative bg-white w-full rounded shadow-md overflow-hidden group hover:shadow-xl transition-all duration-300"
           >
+            {/* Image */}
             <div className="relative">
               <img
                 src={course.image}
@@ -88,6 +111,7 @@ export default function TrendingCourses() {
               </span>
             </div>
 
+            {/* Default content */}
             <div className="p-4 sm:p-5">
               <p className="text-xs sm:text-sm text-gray-500 font-medium mb-1 uppercase">
                 {course.name}
@@ -103,65 +127,23 @@ export default function TrendingCourses() {
                 <span className="text-gray-400">({course.reviews})</span>
               </div>
             </div>
+
+            {/* Hover overlay card */}
+            
+            <div className="absolute left-14 inset-0 bg-white p-4 flex flex-col opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 className="text-lg font-bold mb-2">{course.hoverTitle}</h3>
+              <p className="text-sm mb-3">{course.desc}</p>
+              <p className="text-xs">{course.hoverLessons} • {course.hoverEnrolled}</p>
+              <button className="mt-10 px-4 py-2 bg-yellow-500 text-black font-semibold rounded hover:bg-yellow-400 transition">
+                View Details
+              </button>
+               <button className="mt-4 px-4 py-2 bg-black text-gray-300 font-semibold rounded transition">
+                Enroll
+              </button>
+            </div>
           </div>
         ))}
       </div>
-
-      <div className="w-full max-w-2xl mx-auto mt-10 sm:mt-14 text-center px-4">
-        <h1 className="text-sm text-gray-600">Why we are</h1>
-        <p className="font-bold text-lg sm:text-xl mt-2 sm:mt-3">
-          Elevate your professional journey
-        </p>
-        <p className="text-xs sm:text-sm text-gray-600 mt-2 sm:mt-4">
-          Lorem ipsum dolor sit amet consectetur. Pellentesque id quam mauris
-          mus. Vitae diam dolor lacus amet integer ut.
-        </p>
-      </div>
-
-      <div className="min-h-[30vh] flex flex-col items-center justify-center mt-10 sm:mt-16 px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-[80rem]">
-          {categories.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={index}
-                className="w-full h-40 sm:h-56 flex flex-col items-center justify-center shadow-md hover:shadow-xl hover:shadow-[#d6c49e] rounded-xl p-4 sm:p-6 bg-white transition-all duration-300"
-              >
-                <div className="text-2xl sm:text-4xl mb-2 sm:mb-4 text-[#d6c49e]">
-                  <Icon />
-                </div>
-                <h1 className="font-semibold text-xs sm:text-sm text-center">
-                  {item.title}
-                </h1>
-                <h2 className="mt-1 sm:mt-2 text-gray-500 text-xs">
-                  {item.count}
-                </h2>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-<div className="bg-yellow-500 w-full max-w-[80rem] mx-auto relative top-16 sm:top-24 md:top-32 mt-10 mb-20 sm:mt-16 rounded px-4 sm:px-8 md:px-10 py-6 flex flex-col md:flex-row items-center justify-between text-center md:text-left space-y-4 md:space-y-0">
-  {/* Left Text Section */}
-  <div className="w-full md:w-1/2">
-    <h1 className="text-xl sm:text-2xl font-bold leading-snug">
-      Are you ready to start
-      <br className="hidden sm:block" />
-      your journey?
-    </h1>
-  </div>
-
-  {/* Right Buttons Section */}
-  <div className="w-full md:w-auto flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4">
-    <button className="w-full sm:w-auto bg-black text-white px-5 py-2 rounded shadow hover:bg-gray-800 transition text-sm sm:text-base">
-      Browse Courses
-    </button>
-    <button className="w-full sm:w-auto border-2 border-white font-semibold text-white px-5 py-2 rounded hover:bg-yellow-600 transition text-sm sm:text-base">
-      Become A Teacher
-    </button>
-  </div>
-</div>
-
     </div>
   );
 }

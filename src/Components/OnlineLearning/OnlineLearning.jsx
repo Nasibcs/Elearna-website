@@ -53,7 +53,7 @@ export default function OnlineLearning() {
     {
       name: "Development",
       image: four,
-      desc: "Database integration with MongoDB",
+      desc: "Database integration with MongoDB and SQL Databases",
       review: "5.20",
       reviews: "12",
       lessons: "12 Lessons",
@@ -123,60 +123,64 @@ export default function OnlineLearning() {
       {/* Course Cards with motion */}
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {CoursesData.map((course, index) => (
-          <motion.div
-            key={index}
-            className="bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-xl transition-all duration-300"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
-            whileHover={{ scale: 1.05 }}
-          >
-            <div className="relative">
-              <img
-                src={course.image}
-                alt={course.name}
-                className="w-full h-52 object-cover"
-              />
-              <span className="absolute top-4 right-4 w-16 h-16 flex justify-center items-center font-bold text-xl bg-blue-600 text-white px-3 py-1 rounded-full">
-                {course.price}
-              </span>
-            </div>
+<motion.div
+  key={index}
+  className="group bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-xl transition-all duration-300 relative"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: index * 0.1, duration: 0.5 }}
+  whileHover={{ scale: 1.05 }}
+>
+  <div className="relative">
+    <img
+      src={course.image}
+      alt={course.name}
+      className="w-full h-52 object-cover"
+    />
+    <span className="absolute top-44 right-4 w-16 h-16 flex justify-center items-center font-bold text-xl bg-blue-600 text-white px-3 py-1 rounded-full">
+      {course.price}
+    </span>
+  </div>
 
-            <div className="p-5">
-              <p className="text-sm text-gray-500 font-medium mb-1 uppercase">
-                {course.name}
-              </p>
-              <h2 className="text-lg font-bold text-gray-800 mb-2">
-                {course.desc}
-              </h2>
+  <div className="p-5 pb-14"> {/* extra padding at bottom for button space */}
+    <p className="text-sm text-gray-500 font-medium mb-1 uppercase">
+      {course.name}
+    </p>
+    <h2 className="text-lg font-bold text-gray-800 mb-2">{course.desc}</h2>
 
-              <div className="flex items-center gap-2 text-yellow-500 text-sm mb-4">
-                <FaStar />
-                <span className="text-gray-700 font-medium">
-                  {course.review}
-                </span>
-                <span className="text-gray-400">({course.reviews})</span>
-              </div>
+    <div className="flex items-center gap-2 text-yellow-500 text-sm mb-4">
+      <FaStar />
+      <span className="text-gray-700 font-medium">{course.review}</span>
+      <span className="text-gray-400">({course.reviews})</span>
+    </div>
 
-              <hr className="my-3" />
+    <hr className="my-3" />
 
-              <div className="flex justify-between text-sm text-gray-600 font-medium">
-                <div className="flex items-center gap-2">
-                  <FaBookOpen />
-                  <span>{course.lessons}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <FaUser />
-                  <span>{course.enroll}</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+    <div className="flex justify-between text-sm text-gray-600 font-medium mt-6">
+      <div className="flex items-center gap-2">
+        <FaBookOpen />
+        <span>{course.lessons}</span>
+      </div>
+      <div className="flex items-center gap-2">
+        <FaUser />
+        <span>{course.enroll}</span>
+      </div>
+    </div>
+  </div>
+
+  {/* Hover Button */}
+  <div className="absolute w-full h-14 bottom-9 left-1/2 -translate-x-1/2 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+    <button className="bg-yellow-400 w-full h-full text-white px-5 py-2 rounded shadow-lg hover:bg-yellow-500 transition">
+      Course Detiles
+    </button>
+  </div>
+</motion.div>
+
         ))}
       </div>
 
       {/* Bottom Banner */}
-      <div className="mt-10 w-full max-w-xl mx-auto bg-[#0c463c] rounded-full px-4 py-3 text-white text-center text-sm sm:text-base">
+      <div className="mt-10 md:invisible w-full max-w-xl mx-auto bg-[#0c463c] rounded-full px-4 py-3 text-white text-center text-sm sm:text-base">
         <p>
           We assist you in finding the ideal tutor at no cost.
           <a href="#" className="underline ml-1">
