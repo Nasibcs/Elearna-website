@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 import CoursesCards from "./Components/CoursesCards/CoursesCards";
 import Footer from "./Components/Footer/Footer";
@@ -36,7 +37,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <Router basename="/">
+    <BrowserRouter basename="/">
       <Header />
       <Routes>
         <Route path="/blogone" element={<Home />} />
@@ -107,6 +108,6 @@ useEffect(() => {
       </Routes>
 
       <Footer />
-    </Router>
+    </BrowserRouter>
   );
 }
