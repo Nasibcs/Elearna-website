@@ -5,83 +5,115 @@ import vid from "./video/video.mp4";
 import { motion } from "framer-motion";
 
 export default function WhatWeOffer() {
+  const offerings = [
+    "Skill-based instruction",
+    "Analytics and insights",
+    "Global certification",
+    "Customizable courses"
+  ];
+
   return (
-    <>
-      <div className="flex flex-col lg:flex-row items-center justify-center px-4 sm:px-6 md:px-8 lg:px-24 py-8 sm:py-12 md:py-16 gap-8 lg:gap-12 bg-white">
-        {/* Image + Video Section */}
+    <section className="bg-white">
+      <div className="flex relative bottom-20 md:bottom-28 flex-col lg:flex-row items-center justify-center px-3 xs:px-4 sm:px-6 md:px-8 lg:px-24 py-6 xs:py-8 sm:py-12 md:py-16 gap-6 xs:gap-8 sm:gap-10 lg:gap-16 max-w-7xl mx-auto overflow-hidden mt-10">
+        {/* Media Section */}
         <motion.div
-          className="flex gap-4 sm:gap-6 items-center justify-center w-full lg:w-1/2"
+          className="flex gap-3 xs:gap-4 items-center justify-center w-full lg:w-1/2 relative"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          {/* Image */}
-          <div className="relative">
-            <div className="absolute -top-4 -left-4 sm:-top-5 sm:-left-5 w-16 sm:w-20 h-16 sm:h-20 bg-yellow-400 rounded-full -z-10" />
-            <img
-              src={img}
-              alt="Teacher explaining a concept"
-              className="w-40 sm:w-48 md:w-52 h-60 sm:h-64 md:h-72 object-cover rounded-lg shadow-md"
-            />
-          </div>
+          {/* Mobile S: -top-6 -left-6 w-32 h-32 */}
+          {/* Mobile M: -top-7 -left-7 w-36 h-36 */}
+          {/* Mobile L: -top-8 -left-8 w-40 h-40 */}
+          <div className="absolute -top-6 -left-6 xs:-top-7 xs:-left-7 sm:-top-8 sm:-left-8 w-32 xs:w-36 sm:w-40 h-32 xs:h-36 sm:h-40 bg-yellow-400 rounded-full -z-10"></div>
+          <div className="absolute bottom-0 left-0 w-[180%] xs:w-[190%] sm:w-[200%] h-[180%] xs:h-[190%] sm:h-[200%] border border-gray-200 rounded-full -z-20"></div>
 
-          {/* Video */}
+          {/* Video sizing for different devices */}
+          {/* Mobile S: w-36 h-48 */}
+          {/* Mobile M: w-40 h-56 */}
+          {/* Mobile L: w-44 h-64 */}
+          {/* Tablet: w-48 h-72 */}
+          {/* Laptop: w-56 h-80 */}
           <video
             src={vid}
-            className="w-48 sm:w-56 md:w-64 h-60 sm:h-64 md:h-72 object-cover rounded-lg shadow-md"
+            className="w-36 xs:w-40 sm:w-44 md:w-48 lg:w-56 h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 object-cover rounded-tl-[40px] xs:rounded-tl-[45px] sm:rounded-tl-[50px] shadow-md"
             autoPlay
             loop
             muted
             playsInline
+            aria-label="Demo of our learning platform"
+            title="Platform demo"
+          />
+
+          {/* Image sizing for different devices */}
+          {/* Mobile S: w-48 h-64 */}
+          {/* Mobile M: w-52 h-68 */}
+          {/* Mobile L: w-56 h-72 */}
+          {/* Tablet: w-64 h-80 */}
+          {/* Laptop: w-[25rem] h-[30rem] */}
+          <img
+            src={img}
+            alt="Student working on laptop"
+            className="w-48 xs:w-52 sm:w-56 md:w-64 lg:w-[25rem] h-64 xs:h-68 sm:h-72 md:h-80 lg:h-[30rem] object-cover shadow-md rounded"
+            loading="lazy"
           />
         </motion.div>
 
-        {/* Text Content Section */}
+        {/* Content Section */}
         <motion.div
-          className="max-w-xl w-full text-start"
+          className="relative lg:-right-20 max-w-xl w-full text-start"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <p className="uppercase text-xs sm:text-sm font-semibold text-gray-500 mb-2">
+          {/* Text sizes for different devices */}
+          <p className="uppercase text-[11px] xs:text-xs sm:text-sm font-semibold text-gray-500 mb-1 xs:mb-2
+           lg:text-sm">
             What we offer
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0f1c22] mb-3 sm:mb-4 leading-snug">
-            Personalized learning for your ambitions
+          
+          {/* Heading sizes */}
+          <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-3xl font-bold text-primary-dark mb-2 xs:mb-3 sm:mb-4 leading-snug ">
+            Personalized learning for <br /> your ambitions
           </h2>
-          <p className="text-gray-500 text-sm sm:text-base mb-4 sm:mb-6">
-            Lorem ipsum dolor sit amet consectetur. Pellentesque id quam mauris
-            mus. Vitae diam dolor lacus amet integer ut.
+          
+          {/* Paragraph sizes */}
+          <p className="text-gray-500 text-xs xs:text-[13px] sm:text-base mb-3 xs:mb-4 sm:mb-6">
+            Our platform adapts to your learning style and pace to help you achieve your goals faster.
           </p>
 
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8 text-sm sm:text-base text-[#0f1c22] font-medium list-disc ml-4 sm:ml-5">
-            <li>Skill-based instruction</li>
-            <li>Analytics and insights</li>
-            <li>Global certification</li>
-            <li>Customizable courses</li>
+          {/* List items */}
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 xs:gap-3 sm:gap-4 mb-4 xs:mb-6 sm:mb-8 text-xs xs:text-[13px] sm:text-base text-primary-dark font-medium list-disc ml-3 xs:ml-4 sm:ml-5">
+            {offerings.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
 
-          {/* CTA Box */}
-          <div className="bg-[#f1f7f9] p-4 sm:p-5 md:p-6 rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div>
-              <p className="font-semibold text-base sm:text-lg text-[#0f1c22]">
+          {/* Bottom card */}
+          <div className="bg-[#f1f7f9] w-full p-3 xs:p-4 sm:p-5 md:p-6 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-2 xs:gap-3 sm:gap-4 md:gap-6">
+            {/* Text Section */}
+            <div className="text-center sm:text-left flex-1">
+              <p className="font-semibold text-sm xs:text-[15px] sm:text-lg md:text-xl text-[#0f1c22]">
                 Still have questions?
               </p>
-              <p className="text-xs sm:text-sm text-gray-500 mt-1">
+              <p className="text-[10px] xs:text-xs sm:text-sm md:text-base text-gray-500 mt-1 leading-snug">
                 Lorem ipsum dolor sit amet conse ipsum blandit etiam aliquam.
               </p>
             </div>
-            <button className="w-full sm:w-auto bg-[#0f1c22] hover:bg-[#1e2e33] text-white px-4 sm:px-5 py-2 rounded transition-all text-sm sm:text-base">
-              Get Started
-            </button>
+
+            {/* Button Section */}
+            <div className="w-full sm:w-auto">
+              <button className="w-full sm:w-auto bg-[#0f1c22] hover:bg-[#1e2e33] text-white px-3 xs:px-4 sm:px-5 md:px-6 py-1 xs:py-2 sm:py-2.5 rounded transition-all text-xs xs:text-sm sm:text-base md:text-lg">
+                Get Started
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>
 
-      {/* Gallery Component */}
       <LearnGalary />
-    </>
+    </section>
   );
 }

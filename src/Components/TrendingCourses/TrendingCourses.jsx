@@ -4,13 +4,11 @@ import st2 from "./images/st2.jpg";
 import st3 from "./images/st3.jpg";
 import st4 from "./images/st4.jpg";
 import {
-  FaStar,
   FaPencilAlt,
   FaCalculator,
   FaLaptopCode,
   FaBullhorn,
 } from "react-icons/fa";
-import { de } from "zod/locales";
 
 export default function TrendingCourses() {
   const categories = [
@@ -26,7 +24,7 @@ export default function TrendingCourses() {
       image: st1,
       desc: "Crisis management and problem-solving strategies",
       review: "4.88",
-      reviews: "210",
+      reviews: "(210)",
       lessons: "6 Lessons",
       enroll: "8k Enrolled",
       price: "free",
@@ -34,13 +32,14 @@ export default function TrendingCourses() {
     hoverLessons:"6 Lessons",
     hoverEnrolled:"12k Enrolled",
     hoverDesc:'Lorem ipsum dolor sit amet consectetur. Eget viverra suspendisse imperdiet.',
+    stars:"🌟🌟🌟🌟🌟",
     },
     {
       name: "Design",
       image: st2,
       desc: "Advanced Photoshop techniques for designers",
       review: "5.00",
-      reviews: "1.2k",
+      reviews: "(1.2k)",
       lessons: "8 Lessons",
       enroll: "25k Enrolled",
       price: "$200",
@@ -48,13 +47,15 @@ export default function TrendingCourses() {
     hoverLessons:"6 Lessons",
     hoverEnrolled:"12k Enrolled",
     hoverDesc:'Lorem ipsum dolor sit amet consectetur. Eget viverra suspendisse imperdiet.',
+    stars:"🌟🌟🌟🌟🌟",
+
     },
     {
       name: "Finance",
       image: st3,
       desc: "Operations management and process improvement",
       review: "5.00",
-      reviews: "812",
+      reviews: "(812)",
       lessons: "12 Lessons",
       enroll: "28k Enrolled",
       price: "$140",
@@ -62,13 +63,15 @@ export default function TrendingCourses() {
     hoverLessons:"6 Lessons",
     hoverEnrolled:"12k Enrolled",
     hoverDesc:'Lorem ipsum dolor sit amet consectetur. Eget viverra suspendisse imperdiet.',
+    stars:"🌟🌟🌟🌟🌟",
+
     },
     {
       name: "Coding",
       image: st4,
       desc: "Full-stack web development fundamentals",
       review: "4.92",
-      reviews: "930",
+      reviews: "(930)",
       lessons: "10 Lessons",
       enroll: "18k Enrolled",
       price: "$320",
@@ -76,15 +79,15 @@ export default function TrendingCourses() {
     hoverLessons:"6 Lessons",
     hoverEnrolled:"12k Enrolled",
     hoverDesc:'Lorem ipsum dolor sit amet consectetur. Eget viverra suspendisse imperdiet.',
+    stars:"🌟🌟🌟🌟🌟",
+
 
     },
   ];
-  const hoverCard =[{
-   
-  }]
+  
 
   return (
-    <div className="w-full flex flex-col p-4 md:p-8 bg-[#e5f3f8]">
+    <div className="w-full flex flex-col p-4 md:p-8 bg-white  2xl:w-[50%] 2xl:m-auto">
       <div className="w-full text-center mb-8 md:mb-10">
         <h1 className="text-sm text-gray-600">TRENDING COURSES</h1>
         <p className="text-xl md:text-2xl font-bold mt-1">
@@ -100,7 +103,7 @@ export default function TrendingCourses() {
             className="relative bg-white w-full rounded shadow-md overflow-hidden group hover:shadow-xl transition-all duration-300"
           >
             {/* Image */}
-            <div className="relative">
+            <div className="">
               <img
                 src={course.image}
                 alt={course.name}
@@ -112,28 +115,25 @@ export default function TrendingCourses() {
             </div>
 
             {/* Default content */}
-            <div className="p-4 sm:p-5">
+            <div className=" relative p-4 sm:p-5">
               <p className="text-xs sm:text-sm text-gray-500 font-medium mb-1 uppercase">
                 {course.name}
               </p>
               <h2 className="text-base sm:text-lg font-bold text-gray-800 mb-2 line-clamp-2">
                 {course.desc}
+              </h2>  <h2 className="text-base sm:text-lg font-bold text-gray-800 mb-2 line-clamp-2">
+                {course.stars} {" "} {course.reviews}
               </h2>
-              <div className="flex items-center gap-1 sm:gap-2 text-yellow-500 text-xs sm:text-sm">
-                <FaStar className="text-xs sm:text-sm" />
-                <span className="text-gray-700 font-medium">
-                  {course.review}
-                </span>
-                <span className="text-gray-400">({course.reviews})</span>
-              </div>
+       
             </div>
 
             {/* Hover overlay card */}
             
-            <div className="absolute left-14 inset-0 bg-white p-4 flex flex-col opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute w-72 inset-0 bg-white p-4 flex flex-col opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <h3 className="text-lg font-bold mb-2">{course.hoverTitle}</h3>
-              <p className="text-sm mb-3">{course.desc}</p>
               <p className="text-xs">{course.hoverLessons} • {course.hoverEnrolled}</p>
+
+              <p className="text-sm mt-3">{course.desc}</p>
               <button className="mt-10 px-4 py-2 bg-yellow-500 text-black font-semibold rounded hover:bg-yellow-400 transition">
                 View Details
               </button>

@@ -24,38 +24,44 @@ export default function CoursesCards() {
   };
 
   return (
-    <div className="px-4 py-12 max-w-7xl mx-auto overflow-x-hidden">
+    <div className="px-4 py-12 max-w-7xl mx-auto overflow-x-hidden w-full">
       {/* Cards Grid */}
-      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {currentCards.map((course, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden transition duration-300 max-w-full group"
-          >
-            {/* Image Zoom Effect */}
-            <div className="overflow-hidden">
-              <motion.img
-                src={course.image}
-                alt={course.title}
-                className="w-full h-48 object-cover block transition-transform duration-500 ease-in-out group-hover:scale-110"
-              />
-            </div>
+      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full">
+     {currentCards.map((course, index) => (
+  <motion.div
+    key={index}
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.4 }}
+    className="bg-white border-gray-300 rounded h-[28rem] flex flex-col justify-between overflow-hidden duration-300 max-w-sm border border-gray-200 group"
+  >
+    {/* Image */}
+    <div className="overflow-hidden h-[90%]">
+      <motion.img
+        src={course.image}
+        alt={course.title}
+        className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+      />
+    </div>
 
-            {/* Content */}
-            <div className="p-5">
-              <p className="text-sm font-semibold text-gray-500 uppercase mb-1 break-words">
-                {course.category}
-              </p>
-              <h2 className="text-lg font-bold text-gray-800 break-words">
-                {course.title}
-              </h2>
-              <p className="text-gray-400 text-sm mt-2">{course.date}</p>
-            </div>
-          </motion.div>
-        ))}
+    {/* Content */}
+    <div className="p-5">
+      {/* Category */}
+      <p className="text-xs font-semibold text-gray-500 uppercase mb-2 tracking-wide">
+        {course.category}
+      </p>
+
+      {/* Title */}
+      <h2 className="text-xl mt-4 font-semibold text-gray-900 leading-snug hover:underline cursor-pointer">
+        {course.title}
+      </h2>
+
+      {/* Date */}
+      <p className="text-gray-500 text-sm mt-3">{course.date}</p>
+    </div>
+  </motion.div>
+))}
+
       </div>
 
       {/* Pagination Controls */}

@@ -30,6 +30,8 @@ import AskedQuestion from "./Components/AskedQuestions/AskedQuestion";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
+import WhyWeAre from "./Components/WhyWeAre/WhyWeAre";
+import Register from "./Components/Register/Register";
 export default function App() {
 
 useEffect(() => {
@@ -66,6 +68,8 @@ useEffect(() => {
               <Offering />
               <Testmonial />
               <TrendingCourses />
+              <WhyWeAre/>
+              
             </>
           }
         />
@@ -105,6 +109,8 @@ useEffect(() => {
             </>
           }
         />
+
+        <Route path="/register" element={<Register/>}/>
       </Routes>
 
       <Footer />

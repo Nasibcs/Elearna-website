@@ -1,62 +1,77 @@
-import React from "react";
 import { motion } from "framer-motion";
 import demoVideo from "./video/video.mp4";
-import img1 from "./image/img1.svg";
+import manager from "./image/manager.jpg";
 
 export default function OnlineCourses() {
   return (
-    <div className="w-full flex flex-col lg:flex-row justify-between gap-6 px-4 sm:px-6 lg:px-12 py-10 overflow-x-hidden">
-      {/* Left Banner Section */}
+    <div className="w-full flex flex-col p-4 gap-5 bg-white 
+      md:flex-row md:h-auto lg:flex-row lg:h-auto xl:px-10 
+      2xl:max-w-[1800px] 2xl:mx-auto">
+      
+      {/* First Card */}
       <motion.div
-        className="w-full lg:w-1/2 min-h-[20rem] sm:min-h-[24rem] rounded bg-boxbanner bg-cover bg-center flex items-center justify-center"
+        className="w-full bg-[#eafafc] rounded-lg overflow-hidden
+          md:h-[27rem] lg:h-[18rem] lg:flex lg:relative flex flex-col flex-col-reverse p-4 "
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="bg-whiteOverlay flex h-full items-end w-full">
-          <div className="mb-8 sm:mb-12 md:mb-16 px-4 sm:px-6 md:px-10 text-black max-w-full">
-            <h1 className="text-lg sm:text-xl md:text-2xl font-semibold leading-snug break-words">
-              Quick access to the <br /> popular courses
-            </h1>
-            <button className="bg-yellow-500 w-32 sm:w-36 h-10 rounded font-bold mt-4 hover:bg-yellow-400 transition">
-              View Courses
-            </button>
-          </div>
+          <div className="bg-whiteOverlay flex lg:justify-center items-center w-full">
+        </div>
+        
+        {/* Image Section - Visible on mobile, hidden on lg screens */}
+        <div className="w-full h-[14rem] md:h-[16rem] lg:hidden">
+          <img 
+            src={manager} 
+            alt="Manager" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Background Image - Visible on lg screens and up */}
+        <div className="hidden lg:block lg:absolute lg:inset-0 lg:bg-boxbanner lg:bg-cover lg:bg-center lg:bg-no-repeat"></div>
+
+        {/* Content Section */}
+        <div className="p-4 lg:p-0 lg:absolute lg:bottom-16 lg:left-4 lg:z-20">
+          <h1 className="text-xl font-semibold text-center lg:text-left lg:text-2xl">
+            Quick access to the <br className="hidden"/> popular courses
+          </h1>
+          <button className="bg-[#efb70e] py-3 px-6 rounded-lg mt-4 block mx-auto lg:mx-0 lg:mt-6">
+            View Courses
+          </button>
         </div>
       </motion.div>
 
-      {/* Right Video Section */}
+      {/* Second Card */}
       <motion.div
-        className="w-full lg:w-1/2 rounded flex flex-col md:flex-row bg-[#F8EFBA] items-center justify-between p-4 sm:p-6 gap-6"
+        className="w-full rounded-lg bg-[#f4f1e3] p-4 flex flex-col
+          md:h-[27rem] lg:h-[18rem] lg:flex-row lg:items-center"
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
       >
-        {/* Left Side Content */}
-        <div className="w-full md:w-1/3 flex flex-col justify-between items-center text-center">
-          <h1 className="font-bold text-lg sm:text-xl md:text-2xl mb-4 leading-snug break-words">
-            Develop Your <br /> Skill Online!
+        {/* Text Section */}
+        <div className="lg:flex-1 lg:pl-4">
+          <h1 className="font-semibold text-xl text-center lg:text-left lg:text-2xl mb-4">
+            Develop Your <br className="hidden"/> Skill Online!
           </h1>
-          <button className="w-36 sm:w-40 h-10 sm:h-12 bg-black text-white rounded hover:bg-gray-800 transition">
+          <button className="py-3 px-6 bg-gray-800 text-white rounded-lg mt-4 block mx-auto lg:mx-0">
             Apply Now
           </button>
         </div>
 
-        {/* Video */}
-        <div className="w-full md:w-2/3 relative">
+        {/* Video Section */}
+        <div className="mt-4 lg:mt-0 lg:flex-1 lg:flex lg:justify-center">
           <video
             controls
-            className="w-full h-52 sm:h-56 md:h-52 lg:h-64 object-cover rounded"
+            className="w-full max-w-[25rem] h-auto rounded-lg"
           >
             <source src={demoVideo} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-
-          {/* Floating Image */}
-          <span className="absolute -bottom-8 left-8 w-16 sm:w-20 md:w-24">
-            <img src={img1} alt="icon" className="w-full h-auto" />
-          </span>
         </div>
+        
+        
       </motion.div>
     </div>
   );

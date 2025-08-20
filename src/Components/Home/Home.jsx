@@ -8,8 +8,9 @@ export default function Home() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="bg-blackOverlay bg-opacity-60 w-full h-screen flex items-center">
-        <div className="container mx-auto px-4 py-16 text-white text-center md:text-left break-words">
+      <div className="bg-black/60 bg-opacity-60 w-full h-screen flex items-center">
+        <div className="container mx-auto px-4 py-16 text-white text-center md:text-left break-words
+         ">
           
           {/* Small heading */}
           <motion.h1

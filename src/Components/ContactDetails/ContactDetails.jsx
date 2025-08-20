@@ -33,9 +33,9 @@ export default function ContactDetails() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center text-center bg-white rounded-xl px-6 py-8 shadow-md hover:shadow-xl transition duration-300"
+            className="flex flex-col items-center text-center  rounded-xl px-6 py-8"
           >
-            <div className="text-green-700 mb-4">{item.icon}</div>
+            <div className="text-gray-500 mb-4 size-10">{item.icon}</div>
             <h2 className="font-semibold text-lg text-gray-800 mb-2">{item.title}</h2>
             {item.lines.map((line, i) => (
               <p key={i} className="text-sm text-gray-600">{line}</p>

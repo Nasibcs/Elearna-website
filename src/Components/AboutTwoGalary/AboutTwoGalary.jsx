@@ -70,53 +70,54 @@ const data = [
 
 export default function AboutTwoGalary() {
   return (
-    <div className="w-full bg-white px-4 sm:px-6 md:px-10 py-10 border border-blue-200 rounded-xl shadow-md">
-      <div className="flex flex-col lg:flex-row gap-10 justify-between">
-        {/* Sticky Left Section */}
+    <div className="w-full bg-white px-4 sm:px-6 md:px-10 lg:px-14 xl:px-20 py-10 md:py-14 rounded-xl shadow-md">
+      <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 justify-between">
+        
+        {/* Left Section */}
         <motion.div
-          className="w-full lg:w-1/3 sticky top-10 self-start border border-gray-200 rounded-xl shadow-sm overflow-hidden"
+          className="w-full lg:w-1/3 border border-gray-200 rounded-xl shadow-sm overflow-hidden lg:sticky lg:top-24"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <img src={st9} alt="Visual learning" className="w-full h-60 object-cover" />
-          <div className="bg-white p-5">
-            <p className="text-sm text-gray-500">12.10.2024 • Nina Lefler</p>
-            <h2 className="text-xl font-bold mt-2 leading-tight">
+          <img src={st9} alt="Visual learning" className="w-full h-56 sm:h-64 md:h-72 object-cover" />
+          <div className="bg-white p-5 md:p-6">
+            <p className="text-xs sm:text-sm text-gray-500">12.10.2024 • Nina Lefler</p>
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold mt-2 leading-snug">
               Improve knowledge retention with visual learning
             </h2>
-            <p className="text-gray-600 text-sm mt-2 leading-relaxed">
-              Lorem ipsum dolor sit amet consectetur. Enim turpis feugiat elementum elit. Cras mollis aliquam orci mauris sagittis
-              fermentum eu diam vulputate.
+            <p className="text-gray-600 text-sm sm:text-base mt-3 leading-relaxed">
+              Lorem ipsum dolor sit amet consectetur. Enim turpis feugiat elementum elit.
+              Cras mollis aliquam orci mauris sagittis fermentum eu diam vulputate.
             </p>
           </div>
         </motion.div>
 
         {/* Grid Section */}
-        <div className="w-full lg:w-2/3 max-h-[100%] overflow-hidden">
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 custom-scrollbar-hidden">
+        <div className="w-full lg:w-2/3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {data.map((item, index) => (
               <motion.div
                 key={index}
                 className="bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg transition duration-300 cursor-pointer"
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(0,0,0,0.12)" }}
+                whileHover={{ scale: 1.03 }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
                 viewport={{ once: true }}
               >
                 <img
                   src={item.image}
                   alt="thumbnail"
-                  className="w-full h-40 object-cover rounded-t-lg"
+                  className="w-full h-40 sm:h-44 md:h-48 object-cover rounded-t-lg"
                 />
                 <div className="p-4">
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs sm:text-sm text-gray-500">
                     {item.date} <span className="mx-1">•</span>
-                    <span className="font-semibold uppercase">{item.author}</span>
+                    <span className="font-semibold">{item.author}</span>
                   </p>
-                  <h3 className="text-sm font-semibold text-black mt-2 leading-snug hover:text-blue-600 transition duration-200">
+                  <h3 className="text-sm sm:text-base font-semibold text-black mt-2 leading-snug hover:text-blue-600 transition duration-200">
                     {item.title}
                   </h3>
                 </div>

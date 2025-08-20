@@ -10,7 +10,8 @@ const logos = [learn, learn2, learn3, learn4, learn5, learn6];
 
 const LearnGalary = () => {
   return (
-    <div className="bg-[#f0f8ff] py-10 px-4 md:px-8 lg:px-20">
+    <div className="bg-[#f0f8ff]">
+    <div className="bg-[#f0f8ff] py-10 px-4 md:px-8 lg:px-20 2xl:w-[50%] 2xl:m-auto">
       <h2 className="text-center text-gray-800 font-semibold text-lg sm:text-xl md:text-2xl mb-8">
         Learn from <span className="text-blue-600 font-bold">350+</span> leading universities and companies with us
       </h2>
@@ -28,6 +29,7 @@ const LearnGalary = () => {
           ))}
         </div>
       </div>
+    </div>
     </div>
   );
 };
