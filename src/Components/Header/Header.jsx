@@ -256,11 +256,11 @@ export default function Header() {
             </span>
           </div>
           <div className="space-x-2 text-sm">
-            <Link to="/login" className="hover:text-yellow-400">
+            <Link to="#" className="hover:text-yellow-400">
               Login
             </Link>
             <span>|</span>
-            <Link to="/register" className="hover:text-yellow-400">
+            <Link to="#" className="hover:text-yellow-400">
               Register
             </Link>
           </div>

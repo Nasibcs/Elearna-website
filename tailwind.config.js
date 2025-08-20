@@ -13,16 +13,7 @@ module.exports = {
         
         aboutbanner:"url('./src/Components/AboutOne/images/bgColor.webp')",
         bannerImg: "url('./public/image/background.webp')",
-        homeOnebanner: "url('./src/Components/HomeOne/image/bgimg.avif')",
-        homeonebanner:
-          "url('./src/components/HomeOne/image/homeoneImage.webp')",
-        blackOverlay:
-          "linear-gradient(to bottom, rgba(8,0,10,0.6) 0%, rgba(0,5,25,0.95) 100%)",
-
-        darkOverlay:
-          "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1.2) 100%)",
-        darkOverlayTop:
-          "linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(5,10,10,1.8) 90%)",
+        homeOnebanner: "url('./public/image/bgimg.avif')",
         navOverlay:
           "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%)",
         insBackgroundImage:
