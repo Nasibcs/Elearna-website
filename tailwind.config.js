@@ -12,7 +12,7 @@ module.exports = {
         contactbackground:"url('./src/Components/ContactOne/image/background.webp')",
         
         aboutbanner:"url('./src/Components/AboutOne/images/bgColor.webp')",
-        bannerImg: "url('./src/Components/Home/images/background.webp')",
+        bannerImg: "url('./public/image/background.webp')",
         homeOnebanner: "url('./src/Components/HomeOne/image/bgimg.avif')",
         homeonebanner:
           "url('./src/components/HomeOne/image/homeoneImage.webp')",
