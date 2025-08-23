@@ -1,6 +1,6 @@
 export default function BlogTwo() {
   return (
-    <section className="bg-bannerImg bg-cover bg-center bg-no-repeat flex items-center justify-center min-h-screen">
+    <section className="bg-[url('/public/image/background.webp')] bg-cover bg-center bg-no-repeat flex items-center justify-center min-h-screen">
       {/* Overlay */}
       <div className="bg-black/60 w-full h-screen flex items-center">
         {/* Content */}
