@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export default function Home() {
   return (
     <motion.div
-      className="bg-bannerImg bg-cover bg-center bg-no-repeat min-h-screen flex items-center justify-center overflow-x-hidden max-w-[100vw]"
+      className="bg-[url('/public/image/background.webp')] bg-cover bg-center bg-no-repeat min-h-screen flex items-center justify-center overflow-x-hidden max-w-[100vw]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}

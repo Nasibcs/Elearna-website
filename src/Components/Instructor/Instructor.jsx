@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function Instructor() {
   return (
-    <div className="bg-bannerImg bg-cover bg-center bg-no-repeat min-h-[300px] flex items-center justify-center overflow-x-hidden max-w-[100vw]">
+    <div className="bg-[url('/public/image/background.webp')] bg-cover bg-center bg-no-repeat min-h-[300px] flex items-center justify-center overflow-x-hidden max-w-[100vw]">
       <div className="bg-black bg-opacity-60 w-full flex items-center min-h-[300px]">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

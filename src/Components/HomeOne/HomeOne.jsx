@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function HomeOne() {
   return (
-    <div className="bg-homeOnebanner bg-[#0f252a] xl:h-[50rem]" >
+    <div className="bg-[url('./public/image/bgimg.avif')] bg-[#0f252a] xl:h-[50rem]" >
     <div className="flex flex-col flex-col-reverse lg:flex-row items-center justify-between w-full min-h-[55rem] sm:min-h-[45rem] md:h-[83rem] lg:h-[45rem]  text-white px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-10 gap-3 xs:gap-4 sm:gap-5 lg:gap-10 xl:h-[60rem] xl:gap-24 2xl:w-[50%] 2xl:m-auto">
       
       {/* Image Section */}
