@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function ContactOne() {
   return (
-    <div className='bg-contactbackground bg-repeat bg-cover bg-center flex items-center justify-center overflow-hidden'>
+    <div className="bg-[url('/public/image/contactbg.webp')] bg-repeat bg-cover bg-center flex items-center justify-center overflow-hidden">
       <div className="bg-black/60 flex min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] items-end w-full">
         <div className="container text-white px-4 sm:px-6 lg:px-8 mb-20 sm:mb-28 md:mb-36">
           <motion.h1
