@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 const navItems = [
-  {
+    {
     name: "Home",
     dropdown: [
       { label: "Home one", path: "/homeone" },
@@ -81,19 +81,12 @@ const navItems = [
   },
 ];
 
-
-
 export default function Header() {
+  const location = useLocation();
 
-
-    const location = useLocation();
-
-
-  if (location.pathname === "/register" || location.pathname === "/login" || location.pathname==="/cart"
-  ) {
+  if (location.pathname === "/register" || location.pathname === "/login" || location.pathname === "/cart") {
     return null;
   }
-
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -130,7 +123,7 @@ export default function Header() {
 
   return (
     <header className="w-full fixed top-0 left-0 z-50 text-sm">
-      {/* Top Bar */}
+      {/* Top Bar - Hidden on mobile, visible on tablet and up */}
       <div
         className={`hidden w-full flex-col md:flex-row items-center justify-between px-4 py-2 text-white ${
           isScrolled ? "bg-[#0f252a]" : "bg-navOverlay"
@@ -156,15 +149,17 @@ export default function Header() {
         </div>
       </div>
 
+      {/* Main Header */}
       <div
         className={`w-full flex items-center justify-between px-4 py-3 text-white md:h-[5rem] ${
           isScrolled ? "bg-[#011a19]" : "bg-navOverlay"
         } transition-all`}
       >
         <Link to="/">
-          <img src={logo} alt="Logo" className="w-32 h-6" />
+          <img src={logo} alt="Logo" className="w-32 h-6 md:w-40 md:h-8" />
         </Link>
 
+        {/* Desktop Navigation */}
         <ul className="hidden lg:flex space-x-6 font-medium">
           {navItems.map((item, index) => (
             <li
@@ -265,10 +260,31 @@ export default function Header() {
         <div className="hidden lg:flex items-center space-x-6">
           <div className="relative">
             <Link to="cart">
-            <FaOpencart className="text-2xl hover:text-yellow-500 cursor-pointer" />
-            <span className="absolute -top-2 -right-2 w-5 h-5 bg-yellow-500 text-white text-xs rounded-full flex items-center justify-center">
-              0
-            </span>
+              <FaOpencart className="text-2xl hover:text-yellow-500 cursor-pointer" />
+              <span className="absolute -top-2 -right-2 w-5 h-5 bg-yellow-500 text-white text-xs rounded-full flex items-center justify-center">
+                0
+              </span>
+            </Link>
+          </div>
+          <div className="space-x-2 text-sm">
+            <Link to="/login" className="hover:text-yellow-400">
+              Login
+            </Link>
+            <span>|</span>
+            <Link to="/register" className="hover:text-yellow-400">
+              Register
+            </Link>
+          </div>
+        </div>
+
+        {/* Tablet Cart & Auth (hidden on mobile, shown on tablet) */}
+        <div className="hidden md:flex lg:hidden items-center space-x-4 mr-4">
+          <div className="relative">
+            <Link to="cart">
+              <FaOpencart className="text-xl hover:text-yellow-500 cursor-pointer" />
+              <span className="absolute -top-2 -right-2 w-4 h-4 bg-yellow-500 text-white text-xs rounded-full flex items-center justify-center">
+                0
+              </span>
             </Link>
           </div>
           <div className="space-x-2 text-sm">
@@ -285,7 +301,8 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden text-2xl"
+          className="lg:hidden text-2xl p-1 rounded-md active:bg-white active:bg-opacity-10 transition-colors"
+          aria-label="Toggle menu"
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
@@ -293,31 +310,38 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-white shadow-md px-4 py-4 space-y-4 text-black">
-          <ul className="space-y-2 font-medium">
+        <div className="lg:hidden bg-white shadow-lg px-4 py-4 space-y-4 text-black max-h-[80vh] overflow-y-auto">
+          <ul className="space-y-3 font-medium">
             {navItems.map((item, index) => (
-              <li key={item.name}>
+              <li key={item.name} className="border-b border-gray-100 pb-2 last:border-b-0">
                 <div
-                  className="flex justify-between items-center cursor-pointer hover:text-indigo-600"
+                  className="flex justify-between items-center cursor-pointer hover:text-indigo-600 py-2"
                   onClick={() =>
                     setMobileOpenIndex(
                       mobileOpenIndex === index ? null : index
                     )
                   }
                 >
-                  <span>{item.name}</span>
-                  {(item.dropdown || item.mega) && <IoIosArrowDown />}
+                  <span className="font-semibold">{item.name}</span>
+                  {(item.dropdown || item.mega) && (
+                    <IoIosArrowDown 
+                      className={`transform transition-transform ${
+                        mobileOpenIndex === index ? "rotate-180" : ""
+                      }`} 
+                    />
+                  )}
                 </div>
 
                 {(item.dropdown || item.mega) &&
                   mobileOpenIndex === index && (
-                    <ul className="ml-4 mt-1 text-sm space-y-1">
+                    <ul className="ml-3 mt-1 text-sm space-y-2 pl-2 border-l border-gray-200">
                       {item.dropdown &&
                         item.dropdown.map((subItem, i) => (
                           <li key={i}>
                             <Link
                               to={subItem.path}
-                              className="hover:text-indigo-600"
+                              className="hover:text-indigo-600 block py-2"
+                              onClick={() => setMenuOpen(false)}
                             >
                               {subItem.label}
                             </Link>
@@ -326,15 +350,20 @@ export default function Header() {
 
                       {item.sections &&
                         item.sections.map((section, sIdx) => (
-                          <li key={sIdx} className="mt-2">
-                            <div className="font-semibold">
+                          <li key={sIdx} className="mt-3">
+                            <div className="font-semibold text-gray-700">
                               {section.title}
                             </div>
-                            <ul className="ml-3 mt-1 space-y-1 text-sm">
+                            {section.desc && (
+                              <p className="text-xs text-gray-500 mb-2">
+                                {section.desc}
+                              </p>
+                            )}
+                            <ul className="ml-2 mt-1 space-y-2 text-sm">
                               {section.items.map((itm, idx) => (
                                 <li
                                   key={idx}
-                                  className="hover:text-indigo-600"
+                                  className="hover:text-indigo-600 py-1"
                                 >
                                   {itm}
                                 </li>
@@ -348,21 +377,32 @@ export default function Header() {
             ))}
           </ul>
 
-          <div className="relative flex justify-center items-center">
-            <FaOpencart className="text-2xl hover:text-indigo-500" />
-            <span className="absolute -top-2 left-1/2 -translate-x-1/2 w-5 h-5 bg-yellow-500 text-white text-xs rounded-full flex items-center justify-center">
-              0
-            </span>
-          </div>
+          <div className="pt-4 border-t border-gray-200">
+            <div className="flex justify-center items-center pb-4">
+              <Link to="cart" className="relative flex" onClick={() => setMenuOpen(false)}>
+                <FaOpencart className="text-2xl hover:text-indigo-500" />
+                <span className="absolute -top-2 -right-2 w-5 h-5 bg-yellow-500 text-white text-xs rounded-full flex items-center justify-center">
+                  0
+                </span>
+              </Link>
+            </div>
 
-          <div className="text-center">
-            <a href="#" className="hover:text-indigo-500">
-              Login
-            </a>{" "}
-            |{" "}
-            <a href="#" className="hover:text-indigo-500">
-              Register
-            </a>
+            <div className="flex justify-center space-x-4">
+              <Link 
+                to="/login" 
+                className="px-4 py-2 bg-gray-100 rounded-md hover:bg-gray-200 transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                Login
+              </Link>
+              <Link 
+                to="/register" 
+                className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                Register
+              </Link>
+            </div>
           </div>
         </div>
       )}
