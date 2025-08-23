@@ -4,6 +4,7 @@ import { FaOpencart, FaBars, FaTimes } from "react-icons/fa";
 import { TiPhoneOutline } from "react-icons/ti";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const navItems = [
   {
@@ -80,7 +81,20 @@ const navItems = [
   },
 ];
 
+
+
 export default function Header() {
+
+
+    const location = useLocation();
+
+
+  if (location.pathname === "/register" || location.pathname === "/login" || location.pathname==="/cart"
+  ) {
+    return null;
+  }
+
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpenIndex, setMobileOpenIndex] = useState(null);
@@ -119,7 +133,7 @@ export default function Header() {
       {/* Top Bar */}
       <div
         className={`hidden w-full flex-col md:flex-row items-center justify-between px-4 py-2 text-white ${
-          isScrolled ? "bg-[#011a19]" : "bg-navOverlay"
+          isScrolled ? "bg-[#0f252a]" : "bg-navOverlay"
         } transition-all`}
       >
         <div className="flex flex-col sm:flex-row sm:items-center w-full md:w-1/2 justify-center md:justify-start text-center sm:text-left">
@@ -250,17 +264,19 @@ export default function Header() {
         {/* Desktop Buttons */}
         <div className="hidden lg:flex items-center space-x-6">
           <div className="relative">
+            <Link to="cart">
             <FaOpencart className="text-2xl hover:text-yellow-500 cursor-pointer" />
             <span className="absolute -top-2 -right-2 w-5 h-5 bg-yellow-500 text-white text-xs rounded-full flex items-center justify-center">
               0
             </span>
+            </Link>
           </div>
           <div className="space-x-2 text-sm">
-            <Link to="#" className="hover:text-yellow-400">
+            <Link to="/login" className="hover:text-yellow-400">
               Login
             </Link>
             <span>|</span>
-            <Link to="#" className="hover:text-yellow-400">
+            <Link to="/register" className="hover:text-yellow-400">
               Register
             </Link>
           </div>

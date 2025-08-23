@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./image/logo.svg";
 import { motion } from "framer-motion";
-
+import { useLocation } from "react-router-dom";
 const hoverScale = { whileHover: { scale: 1.02 } };
 
 const footerSections = [
@@ -51,6 +51,14 @@ const footerSections = [
 ];
 
 export default function Footer() {
+
+      const location = useLocation();
+
+  // که مسیر register وي، نو header پټ کړه
+  if (location.pathname === "/register" || location.pathname === "/login" || location.pathname==="/cart") {
+    return null;
+  }
+
   return (
     <div className="bg-[#20383e]">
       <motion.footer

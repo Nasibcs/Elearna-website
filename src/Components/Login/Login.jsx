@@ -4,9 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const registerSchema = z.object({
-  firstName: z.string().min(2, "First name must be at least 2 characters"),
-  lastName: z.string().min(2, "Last name must be at least 2 characters"),
+const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   password: z
     .string()
@@ -14,35 +12,29 @@ const registerSchema = z.object({
     .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
     .regex(/[0-9]/, "Password must contain at least one number")
     .regex(/[@$!%*?&]/, "Password must contain at least one special character"),
-  confirmPassword: z.string(),
-  agreeToTerms: z.boolean().refine(val => val === true, "You must agree to the terms and conditions")
-}).refine(data => data.password === data.confirmPassword, {
-  message: "Passwords do not match",
-  path: ["confirmPassword"],
 });
 
-export default function Register() {
+export default function Login() {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({
-    resolver: zodResolver(registerSchema),
+    resolver: zodResolver(loginSchema),
   });
 
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [registrationError, setRegistrationError] = useState("");
+  const [loginError, setLoginError] = useState("");
 
   const onSubmit = async (data) => {
     try {
-      setRegistrationError("");
+      setLoginError("");
       console.log("Form Data:", data);
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
-      // Your registration logic here
+      // Your login logic here
     } catch (error) {
-      setRegistrationError("Registration failed. Please try again.");
+      setLoginError("Login failed. Please try again.");
     }
   };
 
@@ -58,89 +50,24 @@ export default function Register() {
               </svg>
             </div>
           </div>
-          <h2 className="text-3xl font-bold text-white mb-2">Create Account</h2>
+          <h2 className="text-3xl font-bold text-white mb-2">Welcome Back</h2>
           <p className="text-lg text-[#8FCBD9]">
-            Join our community of 50k+ students
+            More than 50k students have joined Elearna already
           </p>
         </div>
 
-        {/* Registration Card */}
+        {/* Login Card */}
         <div className="bg-[#1E3A3F]/90 backdrop-blur-md rounded-2xl shadow-xl border border-[#2D4A4F] p-8 animate-float">
-          {registrationError && (
+          {loginError && (
             <div className="mb-6 p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-300 text-sm flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
               </svg>
-              {registrationError}
+              {loginError}
             </div>
           )}
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
-            {/* Name Fields */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-[#C6E6EE] text-sm font-medium mb-2 flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                  </svg>
-                  First Name
-                </label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    autoComplete="given-name"
-                    {...register("firstName")}
-                    className={`w-full px-4 py-3 pl-10 bg-[#2D4A4F]/70 border rounded-lg text-white placeholder-[#8FCBD9] focus:outline-none focus:ring-2 transition-all duration-200 ${
-                      errors.firstName 
-                        ? "border-red-500 focus:ring-red-500" 
-                        : "border-[#3A5D64] focus:ring-[#FFC107] focus:border-[#FFC107]"
-                    }`}
-                    placeholder="John"
-                  />
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#7FB6C5]" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                </div>
-                {errors.firstName && (
-                  <p className="mt-2 text-red-400 text-sm flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                    </svg>
-                    {errors.firstName.message}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-[#C6E6EE] text-sm font-medium mb-2 flex items-center">
-                  Last Name
-                </label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    autoComplete="family-name"
-                    {...register("lastName")}
-                    className={`w-full px-4 py-3 bg-[#2D4A4F]/70 border rounded-lg text-white placeholder-[#8FCBD9] focus:outline-none focus:ring-2 transition-all duration-200 ${
-                      errors.lastName 
-                        ? "border-red-500 focus:ring-red-500" 
-                        : "border-[#3A5D64] focus:ring-[#FFC107] focus:border-[#FFC107]"
-                    }`}
-                    placeholder="Doe"
-                  />
-                </div>
-                {errors.lastName && (
-                  <p className="mt-2 text-red-400 text-sm flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                    </svg>
-                    {errors.lastName.message}
-                  </p>
-                )}
-              </div>
-            </div>
-
             {/* Email Field */}
             <div>
               <label className="block text-[#C6E6EE] text-sm font-medium mb-2 flex items-center">
@@ -190,14 +117,14 @@ export default function Register() {
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
-                  autoComplete="new-password"
+                  autoComplete="current-password"
                   {...register("password")}
                   className={`w-full px-4 py-3 pl-10 pr-10 bg-[#2D4A4F]/70 border rounded-lg text-white placeholder-[#8FCBD9] focus:outline-none focus:ring-2 transition-all duration-200 ${
                     errors.password 
                       ? "border-red-500 focus:ring-red-500" 
                       : "border-[#3A5D64] focus:ring-[#FFC107] focus:border-[#FFC107]"
                   }`}
-                  placeholder="Create a strong password"
+                  placeholder="Enter your password"
                 />
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#7FB6C5]" viewBox="0 0 20 20" fill="currentColor">
@@ -232,81 +159,24 @@ export default function Register() {
               )}
             </div>
 
-            {/* Confirm Password Field */}
-            <div>
-              <label className="block text-[#C6E6EE] text-sm font-medium mb-2 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                </svg>
-                Confirm Password
-              </label>
-              <div className="relative">
+            {/* Remember me & Forgot password */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
                 <input
-                  type={showConfirmPassword ? "text" : "password"}
-                  autoComplete="new-password"
-                  {...register("confirmPassword")}
-                  className={`w-full px-4 py-3 pl-10 pr-10 bg-[#2D4A4F]/70 border rounded-lg text-white placeholder-[#8FCBD9] focus:outline-none focus:ring-2 transition-all duration-200 ${
-                    errors.confirmPassword 
-                      ? "border-red-500 focus:ring-red-500" 
-                      : "border-[#3A5D64] focus:ring-[#FFC107] focus:border-[#FFC107]"
-                  }`}
-                  placeholder="Confirm your password"
-                />
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#7FB6C5]" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <button
-                  type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                >
-                  {showConfirmPassword ? (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#7FB6C5]" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
-                    </svg>
-                  ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#7FB6C5]" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z" clipRule="evenodd" />
-                      <path d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z" />
-                    </svg>
-                  )}
-                </button>
-              </div>
-              {errors.confirmPassword && (
-                <p className="mt-2 text-red-400 text-sm flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                  </svg>
-                  {errors.confirmPassword.message}
-                </p>
-              )}
-            </div>
-
-            {/* Terms Agreement */}
-            <div className="flex items-start">
-              <div className="flex items-center h-5">
-                <input
-                  id="agreeToTerms"
+                  id="remember-me"
+                  name="remember-me"
                   type="checkbox"
-                  {...register("agreeToTerms")}
                   className="h-4 w-4 text-[#FFC107] focus:ring-[#FFC107] border-[#3A5D64] rounded bg-[#2D4A4F]/70"
                 />
-              </div>
-              <div className="ml-3 text-sm">
-                <label htmlFor="agreeToTerms" className="text-[#8FCBD9]">
-                  I agree to the <a href="#" className="text-[#FFC107] hover:text-[#FFD54F] transition-colors duration-200">Terms and Conditions</a> and <a href="#" className="text-[#FFC107] hover:text-[#FFD54F] transition-colors duration-200">Privacy Policy</a>
+                <label htmlFor="remember-me" className="ml-2 block text-sm text-[#8FCBD9]">
+                  Remember me
                 </label>
-                {errors.agreeToTerms && (
-                  <p className="mt-2 text-red-400 text-sm flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                    </svg>
-                    {errors.agreeToTerms.message}
-                  </p>
-                )}
+              </div>
+
+              <div className="text-sm">
+                <a href="#" className="font-medium text-[#FFC107] hover:text-[#FFD54F] transition-colors duration-200">
+                  Forgot your password?
+                </a>
               </div>
             </div>
 
@@ -322,23 +192,23 @@ export default function Register() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Creating Account...
+                  Logging in...
                 </>
               ) : (
                 <>
-                  Create Account
+                  Log In
                 
                 </>
               )}
             </button>
           </form>
 
-          {/* Login link */}
+          {/* Sign up link */}
           <div className="mt-6 text-center">
             <p className="text-sm text-[#8FCBD9]">
-              Already have an account?{" "}
-              <Link to="/login" className="font-medium text-[#FFC107] hover:text-[#FFD54F] transition-colors duration-200">
-                Log in
+              Don't have an account?{" "}
+              <Link to="/register" className="font-medium text-[#FFC107] hover:text-[#FFD54F] transition-colors duration-200">
+                Sign up
               </Link>
             </p>
           </div>

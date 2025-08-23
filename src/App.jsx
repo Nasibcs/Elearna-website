@@ -31,7 +31,10 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
 import WhyWeAre from "./Components/WhyWeAre/WhyWeAre";
-// import Register from "./Components/Register/Register";
+import Register from "./Components/Register/Register";
+import Login from "./Components/Login/Login";
+import AddToCart from "./Components/AddToCart/AddToCart";
+
 export default function App() {
 
 useEffect(() => {
@@ -110,7 +113,10 @@ useEffect(() => {
           }
         />
 
-        {/* <Route path="/register" element={<Register/>}/> */}
+        <Route path="/register" element={<Register/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/cart" element={<AddToCart/>}/>
+
       </Routes>
 
       <Footer />
